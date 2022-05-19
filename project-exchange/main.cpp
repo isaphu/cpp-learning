@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <vector>
 
 void printMenu()
 {
@@ -91,12 +93,45 @@ void processUserOption(int userOption)
 
 int main()
 {
-    while (true)
-    {
-        printMenu();
+    enum class OrderBookType{bid, ask};
+    //using double for precision and not crazy amount
+    //there are other data type to represent data
+    // double price = 5319.450228;
+    // double amount = 0.00020075;
+    // std::string timestamp{"2020/03/17 17:01:24.884492"};
+    // std::string product{"BTC/USDT"};
+    // OrderBookType orderType = OrderBookType::ask;
+    
+    std::vector<double> prices;
+    std::vector<double> amounts;
+    std::vector<std::string> timestamps;
+    std::vector<std::string> products;
+    std::vector<OrderBookType> orderTypes;
 
-        int userOption = getUserOption();
-        processUserOption(userOption);
-    }
+    prices.push_back(5000.01);
+    amounts.push_back(0.001);
+    timestamps.push_back("2020/03/17 17:01:24.884492");
+    products.push_back("BTC/USDT");
+    orderTypes.push_back(OrderBookType::bid);
+
+    prices.push_back(10.01);
+    amounts.push_back(0.001);
+    timestamps.push_back("2020/03/17 17:01:24.884492");
+    products.push_back("BTC/USDT");
+    orderTypes.push_back(OrderBookType::ask);
+
+    //access the dta
+    std::cout << "prices: " << prices[0] << std::endl;
+    std::cout << "prices: " << prices[1] << std::endl;
+
+
+
+    // while (true)
+    // {
+    //     printMenu();
+
+    //     int userOption = getUserOption();
+    //     processUserOption(userOption);
+    // }
     return 0;
 }
