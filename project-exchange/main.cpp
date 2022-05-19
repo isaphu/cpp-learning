@@ -2,16 +2,34 @@
 #include <string>
 #include <vector>
 
-enum class OrderBookType{bid, ask};
-
-class OrderBookEntry 
+enum class OrderBookType
 {
-    public:
-        double price;
-        double amount;
-        std::string timestamp;
-        std::string product;
-        OrderBookType orderType;
+    bid,
+    ask
+};
+
+class OrderBookEntry
+{
+public:
+    OrderBookEntry(double _price,
+                   double _amount,
+                   std::string _timestamp,
+                   std::string _product,
+                   OrderBookType _orderType)
+    :   price(_price), 
+        amount(_amount), 
+        timestamp(_timestamp), 
+        product(_product), 
+        orderType(_orderType)
+    {
+        
+    }
+
+    double price;
+    double amount;
+    std::string timestamp;
+    std::string product;
+    OrderBookType orderType;
 };
 
 void printMenu()
@@ -47,7 +65,7 @@ void enterOffer()
     std::cout << "Make an offer - enter the amount" << std::endl;
 }
 
-void enterBid() 
+void enterBid()
 {
     std::cout << "Make a bid - enter the amount" << std::endl;
 }
@@ -59,7 +77,7 @@ void printWallet()
 
 void goToNextTimeFrame()
 {
-     std::cout << "Going next time frame" << std::endl;
+    std::cout << "Going next time frame" << std::endl;
 }
 
 int getUserOption()
@@ -99,21 +117,21 @@ void processUserOption(int userOption)
     }
     if (userOption == 6)
     {
-       goToNextTimeFrame();
+        goToNextTimeFrame();
     }
 }
 
 int main()
 {
     // enum class OrderBookType{bid, ask};
-    //using double for precision and not crazy amount
-    //there are other data type to represent data
+    // using double for precision and not crazy amount
+    // there are other data type to represent data
     // double price = 5319.450228;
     // double amount = 0.00020075;
     // std::string timestamp{"2020/03/17 17:01:24.884492"};
     // std::string product{"BTC/USDT"};
     // OrderBookType orderType = OrderBookType::ask;
-    
+
     // std::vector<double> prices;
     // std::vector<double> amounts;
     // std::vector<std::string> timestamps;
@@ -136,8 +154,6 @@ int main()
     // std::cout << "prices: " << prices[0] << std::endl;
     // std::cout << "prices: " << prices[1] << std::endl;
 
-
-
     // while (true)
     // {
     //     printMenu();
@@ -147,16 +163,14 @@ int main()
     // }
     // return 0;
 
-    /*create an instance of class OrderBookEntry, 
+    /*create an instance of class OrderBookEntry,
     order1 is an object and is an instance of the OrderBookEntry class */
-    OrderBookEntry order1;
+    OrderBookEntry order1{
+        1000,
+        0.02,
+        "2020/03/17 17:01:24.884492",
+        "BTC/USDT",
+        OrderBookType::bid};
 
-    order1.price = 100000;
-    order1.amount = 0.002;
-    order1.timestamp= "2020/03/17 17:01:24.884492";
-    order1.product = "BTC/USDT";
-    order1.orderType = OrderBookType::bid;
-
-    std::cout << "The prices is " << order1.price <<std::endl;
-
+    std::cout << "The prices is " << order1.price << std::endl;
 }
