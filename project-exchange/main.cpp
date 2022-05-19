@@ -16,13 +16,12 @@ public:
                    std::string _timestamp,
                    std::string _product,
                    OrderBookType _orderType)
-    :   price(_price), 
-        amount(_amount), 
-        timestamp(_timestamp), 
-        product(_product), 
-        orderType(_orderType)
+        : price(_price),
+          amount(_amount),
+          timestamp(_timestamp),
+          product(_product),
+          orderType(_orderType)
     {
-        
     }
 
     double price;
@@ -165,12 +164,26 @@ int main()
 
     /*create an instance of class OrderBookEntry,
     order1 is an object and is an instance of the OrderBookEntry class */
-    OrderBookEntry order1{
+
+    // create a vector that can store multiple object called orders
+    std::vector<OrderBookEntry> orders;
+
+    orders.push_back(OrderBookEntry{
         1000,
         0.02,
         "2020/03/17 17:01:24.884492",
         "BTC/USDT",
-        OrderBookType::bid};
+        OrderBookType::bid
+    });
+    orders.push_back(OrderBookEntry{
+        1500,
+        0.02344,
+        "2020/03/17 17:01:24.884492",
+        "BTC/USDT",
+        OrderBookType::bid
+    });
+    
 
-    std::cout << "The prices is " << order1.price << std::endl;
+    std::cout << "The prices is " << orders[0].price << std::endl;
+    std::cout << "The amount is " << orders[1].amount << std::endl;
 }
