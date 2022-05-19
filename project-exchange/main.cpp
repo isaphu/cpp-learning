@@ -184,6 +184,26 @@ int main()
     });
     
 
-    std::cout << "The prices is " << orders[0].price << std::endl;
-    std::cout << "The amount is " << orders[1].amount << std::endl;
+    //std::cout << "The prices is " << orders[0].price << std::endl;
+    //std::cout << "The amount is " << orders[1].amount << std::endl;
+
+    //iterate over everything in orders, for each thing I will make a copy of that object
+    //and store that as order do the condition inside
+    for (OrderBookEntry order : orders)
+    {
+        std::cout << "The price is " << order.price << std::endl;
+    }
+
+    // array style syntax
+    for (unsigned int i = 0; i < orders.size(); ++i)
+    {
+        std::cout << "The price is " << orders[i].price << std::endl;
+    }
+
+    // object style to access item
+    for (unsigned int i = 0; i < orders.size(); ++i)
+    {
+        std::cout << "The price is " << orders.at(i).price << std::endl;
+    }
+
 }
